@@ -1,0 +1,21 @@
+ <script type="text/javascript">
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashs = window.location.href.slice(
+                window.location.href.indexOf('?') + 1)
+                .split('&');
+            for (var i = 0; i < hashs.length; i++) {
+                hash = hashs[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        var prodName = getUrlVars()["username"];
+        var prodID = getUrlVars()["ID"];
+        var str="©m¦W:" + prodName 
+         + "<br/>¾Ç¸¹:" + prodID
+        window.onload = function () {
+            document.getElementById("demo").innerHTML = str;
+        }
+    </script>
