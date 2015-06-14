@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>A3261576_林郁翔_WebPD_Week16_3</title>
+    <script type="text/javascript" src="jquery-week16.js"></script>
+</head>
+<body>
+    <!--記得引用JQuery-->
+    <p>單價:<input type="text" id="price"/></p>
+    <p>數量:<input type="text" id="qty"/></p>
+    <input type="checkbox" id="discount" />
+    <!--for對應輸入id-->
+    <label for="discount">打8折</label><hr />
+    <p>總價:<input type="text" id="total"/></p>
+    <p><input type="button" onclick="calTotal();" value="計算總價"/></p>
+    <script type="text/javascript">
+        function calTotal() {
+            var price = $('#price').val();
+            var qty = $('#qty').val();
+            var total;
+            //取得屬性 attr的checked
+            if ($('#discount').attr('checked')) {
+                total = price * qty * 0.8;
+            }
+            else {
+                total = price * qty;
+            }
+            $('#total').val(total);
+        }
+    </script>
+</body>
+</html>

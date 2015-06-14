@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A3261576_林郁翔_WebPD_Week16_1</title>
+    <!-- 引用JQuery -->
+    <script type="text/javascript" src="jquery-week16.js"></script>
+    <!--井字號選可直接選色-->
+    <style type="text/css">
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: #4cff00;
+        }
+
+        .color1 {
+            color: #fadc39;
+        }
+
+        .color2 {
+            color: #ff6a00;
+        }
+    </style>
+
+</head>
+<body>
+    <!--在瀏覽器預設情況下，H1 的字體最大，H6 的字體最小-->
+    <h2>A3261576_林郁翔_WebPD_Week16_1</h2>
+    <ol id="list">
+        <li class="item">TEST1</li>
+        <li>TEST2</li>
+        <li class="item">TEST3</li>
+        <li>TEST4</li>
+    </ol>
+    <p>TEST5</p>
+    <p>TEST6</p>
+    <h2>TEST7</h2>
+    <input type="button" onclick="setCSS1()" value="設定CSS樣式" />
+    <input type="button" onclick="setClass1()" value="設定類別" />
+    <script type="text/javascript">
+        //設定類別
+        function setClass1() {
+            //$(選擇器字串).method(參數列);或 jQuery(選擇器字串).method(參數列);
+            //$()函數，進入jQuery函數庫的窗口，所有jQuery程式碼一定是使用此函數開始
+            //.類別選擇器 #id選擇器
+            $('#list').addClass('red');//因為是class可以不用加.
+            jQuery('.item').addClass('blue');//針對類別為item做設定
+            $('p').addClass('green');
+            //針對li的最後一個元素做設定
+            $('#list li:last').addClass('color1');
+        }
+
+        //設定CSS
+        function setCSS1() {
+            //CSS函式裡面設定多個屬性
+            $('h2').css(
+                {
+                    'background-color': '#dddddd',
+                    'color': 'red',
+                    'font-size': '25pt',
+                    'line-height': '5em'
+                }
+            );
+        }
+
+    </script>
+
+    <div class="content1">
+        <p>TEST8</p>
+    </div>
+    <div class="content2">TEST9</div>
+    <div class="content3">TEST10</div>
+    <input type="button" onclick="addDOM()" value="新增,刪除DOM元素" />
+    <script type="text/javascript">
+        function addDOM() {
+            $('.content1').html('<div class="red">A3261576</div>');
+            $('.content2').text('A3261576_2');
+            $('.content2').append('A3261576_3');
+            $('.content2').after('<p class="green">A3261576_4</p>');
+            $('.content3').remove();
+        }
+    </script>
+</body>
+</html>

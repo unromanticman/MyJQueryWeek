@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A3261576_林郁翔_WebPD_Week16_1</title>
+    <!-- 引用JQuery -->
+    <script type="text/javascript" src="jquery-week16.js"></script>
+    <!--井字號選可直接選色-->
+    <style type="text/css">
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: #4cff00;
+        }
+
+        .color1 {
+            color: #fadc39;
+        }
+
+        .color2 {
+            color: #ff6a00;
+        }
+
+        .line1 {
+            border: 2px solid #333;
+            cursor: pointer;
+        }
+
+        .large {
+            font-size: 25pt;
+            color: red;
+        }
+
+        .small {
+            font-size: 10pt;
+            color: blue;
+        }
+
+        .selected {
+            font-weight: bolder;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="switcher">
+        <span id="default">標準</span>
+        <span id="larger">放大</span>
+        <span id="smaller">縮小</span>
+    </div>
+
+    <p id="setSize">TEST1</p>
+
+    <input type="button" onclick="setEvent()" value="jquery click事件處理" />
+    <input type="button" onclick="mouseEvent();" value="jquery Mouse事件處理" />
+    <p>
+    <p>可再輸入<span id="counter"></span>個中文字元</p>
+    <textarea id="memo" cols="50" rows="5"></textarea>
+
+    <input type="button" onclick="keyEvent();" value="jquery Keyboard事件處理" />
+
+
+    <script type="text/javascript">
+        //注:IE F12可設斷點
+        function setEvent() {
+            //針對id為setSize
+            $('span').addClass('line1');
+            //綁定click事件與setNormal事件再一起執行
+            $('#default').bind('click', setNormal);
+            $('#larger').bind('click', setLarger);
+            $('#smaller').bind('click', setSmaller);
+
+        }
+
+        function setNormal() {
+            //large為內建的類別
+            //注意為removeClass非remove
+            $('#setSize').removeClass('large').removeClass('small');
+            $('#switcher span').removeClass('selected');
+            $('#default').addClass('selected');
+        }
+        function setLarger() {
+            $('#setSize').addClass('large').removeClass('small');
+            $('#switcher span').removeClass('selected');
+            $('#larger').addClass('selected');
+        }
+        function setSmaller() {
+            $('#setSize').addClass('small').removeClass('large');
+            $('#switcher span').removeClass('selected');
+            $('#smaller').addClass('selected');
+        }
+
+        function mouseEvent() {
+            $('p').mouseenter(function () { $(this).addClass('color1'); }
+                ).mouseleave(function () { $(this).removeClass('color1') });
+        }
+
+
+        function keyEvent() {
+            var maxChar = 20;
+            $('#counter').text(maxChar);
+            $('#memo').keydown(function (event) {
+                var msg = $(this).val();
+                var numChar = msg.length;
+                var remainChar = maxChar - numChar;
+                //可以做再輸入...XXX.字
+                if (numChar <= maxChar) {
+                    $('#counter').text(remainChar);
+                }
+                else {
+                    event.preventDefault();
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
