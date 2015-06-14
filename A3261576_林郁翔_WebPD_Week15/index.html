@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A3261576_林郁翔_WebPD_Week15_1</title>
+    <script src="jquery-mobile/jquery-1.6.4.min.js"></script>
+    <script src="jquery-mobile/jquery.mobile-1.0.min.js"></script>
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.0.min.css" />
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.theme-1.0.min.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script type="text/javascript">
+        var num = 0;
+        var img = new Array("piece1.jpg", "piece2.jpg", "piece3.jpg");
+        var msg = new Array("醫生", "劍士", "路人甲");
+        function prev() {
+            num--;
+            if (num < 0) num = 2;
+            //JQ SRC以後面取代
+            $("#roleimg").attr("src", "Week15_Material_WebPD/" + img[num]);
+            //JQ SRC以後面取代
+            $("#rolemsg").text(msg[num]);
+        }
+
+        function next() {
+            num++;
+            if (num > 0) num = 0;
+            //JQ SRC以後面取代
+            $("#roleimg").attr("src", "Week15_Material_WebPD/" + img[num]);
+            //JQ SRC以後面取代
+            $("#rolemsg").text(msg[num]);
+        }
+    </script>
+</head>
+<body>
+    <div data-role="page" id="home">
+        <div data-role="header" data-position="fixed">
+            <h1>林郁翔</h1>
+        </div>
+        <div data-role="content">
+            <img src="Week15_Material_WebPD/piece.jpg" width="100%" />
+            <!-- dialog 類似messagebox彈出-->
+            <a href="#story" data-rel="dialog" data-role="button"
+               data-icon="arrow-r">故事介紹</a>
+            <a href="#role" data-role="button"
+               data-icon="arrow-r">角色介紹</a>
+            <!--有點不懂dada-rel意思? 是可以連外-->
+            <a href="http://www.pccu.edu.tw/" data-rel="external" data-role="button"
+               data-icon="arrow-r">中國文化大學</a>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h3>&copyA3261576_林郁翔</h3>
+        </div>
+    </div>
+    <div data-role="page" id="story">
+        <div data-role="header" data-position="fixed">
+        </div>
+        <div data-role="content">
+            <p>因台固公司線路異常,目前本校對外網路連線速度暫時受影響,已聯繫台固處理中,不便之處,敬請見諒</p>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h3>&copyA3261576_林郁翔</h3>
+        </div>
+    </div>
+    <div data-role="page" id="role">
+        <div data-role="header" data-position="fixed">
+            <h1>人物介紹</h1>
+        </div>
+        <div data-role="content">
+            <!--初始化-->
+            <img id="roleimg" src="Week15_Material_WebPD/piece1.jpg" width="100%" />
+            <p id="rolemsg">"喬巴"治百病"</p>
+
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" class="ui-btn-active" ui-state-persist>回首頁</a> </li>
+                    <li><a href="javascript:prev();">上一個</a> </li>
+                    <li><a href="javascript:next();">下一個</a> </li>
+                </ul>
+            </div>
+            <h3>&copyA3261576_林郁翔</h3>
+        </div>
+    </div>
+</body>
+</html>
